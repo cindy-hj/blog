@@ -39,4 +39,15 @@ public class CommentService {
 		editedComment.setTime(timestamp);
 		return commentRepository.save(editedComment);
 	}
+	
+	// delete
+	@Transactional
+	public void deleteComment(Long id) throws Exception{
+		Comment comment = commentRepository.findById(id).get();
+		if(comment != null) {
+			commentRepository.deleteById(id);
+		} else {
+			throw new RuntimeException("Comment not found");
+		}
+	}
 }

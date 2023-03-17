@@ -39,7 +39,6 @@ public class PostController {
 	@GetMapping("/posts/{id}")
 	public ResponseEntity<Post> retrievePostById(@PathVariable Long id) {
 		log.info("retrieve post controller!");
-		
 		Post post = postService.getPost(id);
 		
 		return new ResponseEntity<Post>(post, new HttpHeaders(), HttpStatus.OK);
@@ -68,6 +67,7 @@ public class PostController {
 	public HttpStatus deletePost(@PathVariable Long id) throws Exception {
 		log.info("delete post controller!");
 		postService.deletePost(id);
+		
 		return HttpStatus.ACCEPTED;
 	}
 }
